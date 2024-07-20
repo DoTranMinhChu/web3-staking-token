@@ -13,7 +13,6 @@ export const WithdrawStakeAmountComponent = () => {
   const withdrawStakeToken = async (e: any) => {
     e.preventDefault();
     const amount = withdrawStakeAmountRef.current.value.trim();
-    console.log(amount);
     if (!amount || isNaN(+amount) || +amount <= 0) {
       console.error("Please enter a valid positive number");
       return;
@@ -41,18 +40,16 @@ export const WithdrawStakeAmountComponent = () => {
     }
   };
   return (
-    <form className="withdraw-form" onSubmit={withdrawStakeToken}>
+    <form className="flex items-center space-x-3" onSubmit={withdrawStakeToken}>
       <label>Withdraw Token:</label>
       <input
         type="text"
         ref={withdrawStakeAmountRef as any}
         className="max-w-[120px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
       />
-      <BaseButtonComponent
-        onClick={withdrawStakeToken}
-        type="submit"
-        label="Withdraw Staked Token"
-      />
+      <BaseButtonComponent onClick={withdrawStakeToken} type="submit">
+        Withdraw Staked Token
+      </BaseButtonComponent>
     </form>
   );
 };

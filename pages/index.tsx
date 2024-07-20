@@ -1,4 +1,5 @@
 import { WalletComponent } from "@/components";
+import { BaseButtonComponent } from "@/components/buttons";
 import { HomeNavigationComponent } from "@/components/navigation/home/homeNavigation.component";
 import { PanelStakeComponent } from "@/components/panelStake";
 import { StakeAmountComponent } from "@/components/stakeToken/stakeAmount.component";
@@ -18,33 +19,34 @@ export default function Home() {
       <WalletComponent>
         <HomeNavigationComponent />
         <StakingTokenProvider>
-          <PanelStakeComponent />
-          <div className="main-content">
-            <div className="button-section">
-              <button
-                onClick={() => handleButtonClick("stake")}
-                className={displaySection === "stake" ? "" : "active"}
-              >
-                Stake
-              </button>
-              <button
-                onClick={() => handleButtonClick("withdraw")}
-                className={displaySection === "withdraw" ? "" : "active"}
-              >
-                Withdraw
-              </button>
+          <div className="max-w-lg mx-auto my-12 bg-gray-300 p-3 rounded-lg">
+            <PanelStakeComponent />
+            <div>
+              <div className="flex items-center space-x-3">
+                <BaseButtonComponent onClick={() => handleButtonClick("stake")}>
+                  Stake
+                </BaseButtonComponent>
+                <BaseButtonComponent
+                  onClick={() => handleButtonClick("withdraw")}
+                >
+                  Withdraw
+                </BaseButtonComponent>
+              </div>
+
+              <div className="m-2 p-2 bg bg-gray-400 rounded-md flex-col space-y-4">
+                {displaySection === "stake" && (
+                  <>
+                    <TokenApprovalComponent />
+                    <StakeAmountComponent />
+                  </>
+                )}
+                {displaySection === "withdraw" && (
+                  <>
+                    <WithdrawStakeAmountComponent />
+                  </>
+                )}
+              </div>
             </div>
-            {displaySection === "stake" && (
-              <div className="stake-wrapper">
-                <TokenApprovalComponent />
-                <StakeAmountComponent />
-              </div>
-            )}
-            {displaySection === "withdraw" && (
-              <div className="stake-wrapper">
-                <WithdrawStakeAmountComponent />
-              </div>
-            )}
           </div>
         </StakingTokenProvider>
       </WalletComponent>

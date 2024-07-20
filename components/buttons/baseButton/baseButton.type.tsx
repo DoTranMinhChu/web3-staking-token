@@ -1,4 +1,4 @@
-export type IBaseButtonProps = { label: string } & React.DetailedHTMLProps<
+export type IBaseButtonProps = {} & React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 >;

@@ -50,13 +50,11 @@ export const WalletComponent: React.FC<WalletProps> = ({ children }) => {
   };
   return (
     <div className="Connect-Wallet">
-      <Web3Context.Provider value={state}>{children}</Web3Context.Provider>
+      <BaseButtonComponent onClick={handleWallet} type="button">
+        Connect Wallet
+      </BaseButtonComponent>
       {isLoading && <p>Loading...</p>}
-      <BaseButtonComponent
-        onClick={handleWallet}
-        type="button"
-        label="Connect Wallet"
-      />
+      <Web3Context.Provider value={state}>{children}</Web3Context.Provider>
     </div>
   );
 };

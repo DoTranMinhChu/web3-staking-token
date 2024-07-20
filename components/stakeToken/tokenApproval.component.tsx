@@ -51,18 +51,16 @@ export const TokenApprovalComponent = () => {
   };
   return (
     <div>
-      <form onSubmit={approveToken} className="token-amount-form">
-        <label className="token-input-label">Token Approval:</label>
+      <form onSubmit={approveToken} className="flex items-center space-x-3">
+        <label>Token Approval:</label>
         <input
           type="text"
           ref={approvedTokenRef as any}
           className="max-w-[120px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         />
-        <BaseButtonComponent
-          onClick={approveToken}
-          type="submit"
-          label="Token Approval"
-        />
+        <BaseButtonComponent onClick={approveToken} type="submit">
+          Token Approval
+        </BaseButtonComponent>
       </form>
     </div>
   );

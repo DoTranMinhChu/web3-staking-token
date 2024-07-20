@@ -21,7 +21,7 @@ export const StakeAmountComponent = () => {
     }
     const amountToStake = ethers.parseUnits(amount, 18).toString();
     try {
-      console.log("amountToStake => ",amountToStake)
+      console.log("amountToStake => ", amountToStake);
       const transaction = await stakingContract.stake(
         configEnv.CTKAddress,
         amountToStake
@@ -47,18 +47,16 @@ export const StakeAmountComponent = () => {
     }
   };
   return (
-    <form onSubmit={stakeToken} className="stake-amount-form">
-      <label className="stake-input-label">Enter Staked Amount:</label>
+    <form onSubmit={stakeToken} className="flex items-center space-x-3">
+      <label>Staked Amount:</label>
       <input
         type="text"
         ref={stakeAmountRef as any}
         className="max-w-[120px] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
       />
-      <BaseButtonComponent
-        onClick={stakeToken}
-        type="submit"
-        label="Stake Token"
-      />
+      <BaseButtonComponent onClick={stakeToken} type="submit">
+        Stake Token
+      </BaseButtonComponent>
     </form>
   );
 };

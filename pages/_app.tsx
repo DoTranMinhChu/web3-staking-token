@@ -11,7 +11,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <React.StrictMode>
       {/* <ToastProvider> */}
+
       <Component {...pageProps} />
+
       {/* </ToastProvider> */}
     </React.StrictMode>
   );

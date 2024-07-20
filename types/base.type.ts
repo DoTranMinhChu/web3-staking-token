@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 
-export type BaseProps = {
-  children: ReactNode;
-};
+export type BasePropsType<T> = {} & React.DetailedHTMLProps<
+  React.HTMLAttributes<T>,
+  T
+>;

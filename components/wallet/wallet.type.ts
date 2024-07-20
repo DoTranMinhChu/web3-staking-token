@@ -1,3 +1,3 @@
-import { BaseProps } from "@/types/base.type";
+import { BasePropsType } from "@/types/base.type";
 
-export type WalletProps = {} & BaseProps;
+export type WalletProps = {} & BasePropsType<HTMLDivElement>;
