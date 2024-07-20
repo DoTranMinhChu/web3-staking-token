@@ -235,16 +235,6 @@ contract StakingToken is ReentrancyGuard {
         return stakedBalance[token][account];
     }
 
-    function getMyTokens(address token, address account)
-        external
-        view
-        onlyManager
-        returns (uint256)
-    {
-        require(whiteListTokens[token].isActive, "Token is not active");
-        return stakedBalance[token][account];
-    }
-
     function getMyStakedBalance(address token) external view returns (uint256) {
         require(whiteListTokens[token].isActive, "Token is not active");
         return stakedBalance[token][msg.sender];
