@@ -3,9 +3,11 @@ import { ethers } from "ethers";
 import Web3Context from "../../context/Web3Context";
 import StakingContext from "@/context/StakingTokenContext";
 import { BaseButtonComponent } from "../buttons";
-import { configEnv } from "@/configs/env";
 
-export const WithdrawStakeAmountComponent = () => {
+type IWithdrawStakeAmountProps = { coinAddress: string };
+export const WithdrawStakeAmountComponent: React.FC<
+  IWithdrawStakeAmountProps
+> = ({ coinAddress }) => {
   const { stakingContract } = useContext(Web3Context);
   const { isReload, setIsReload } = useContext(StakingContext);
 
@@ -21,7 +23,7 @@ export const WithdrawStakeAmountComponent = () => {
     console.log(amountToWithdraw);
     try {
       const transaction = await stakingContract.withdrawStakedTokens(
-        configEnv.CTKAddress,
+        coinAddress,
         amountToWithdraw
       );
       const result = await transaction.wait();

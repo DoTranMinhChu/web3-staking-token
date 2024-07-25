@@ -5,8 +5,10 @@ import Web3Context from "@/context/Web3Context";
 import _ from "lodash";
 import { BaseButtonComponent } from "../buttons";
 import { configEnv } from "@/configs/env";
-
-export const StakeAmountComponent = () => {
+type IStakeAmountComponentProps = { coinAddress: string };
+export const StakeAmountComponent: React.FC<IStakeAmountComponentProps> = ({
+  coinAddress,
+}) => {
   const { stakingContract } = useContext(Web3Context);
   const { isReload, setIsReload } = useContext(StakingContext);
 
@@ -21,9 +23,8 @@ export const StakeAmountComponent = () => {
     }
     const amountToStake = ethers.parseUnits(amount, 18).toString();
     try {
-      console.log("amountToStake => ", amountToStake);
       const transaction = await stakingContract.stake(
-        configEnv.CTKAddress,
+        coinAddress,
         amountToStake
       );
       const result = await transaction.wait();

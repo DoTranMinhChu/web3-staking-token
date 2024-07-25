@@ -22,6 +22,7 @@ contract StakingToken is ReentrancyGuard {
     uint256 public REWARD_RATE = 1e18;
     event RewardRateUpdated(uint256 newRewardRate);
     mapping(address => TokenInfo) public whiteListTokens;
+    address[] public whiteListTokenAddresses;
     mapping(address => mapping(address => uint256)) public stakedBalance;
     mapping(address => mapping(address => uint256)) public rewards;
     mapping(address => mapping(address => uint256))
@@ -88,13 +89,14 @@ contract StakingToken is ReentrancyGuard {
         _;
     }
 
-    function addTokenToWhiteList(address token, string calldata tokenName)
-        external
-        onlyOwner
-    {
-        require(!whiteListTokens[token].isActive, "Token already added");
-        whiteListTokens[token] = TokenInfo(tokenName, true);
-        emit TokenAdded(token);
+    function addTokenToWhiteList(
+        address tokenAddress,
+        string calldata tokenName
+    ) external onlyOwner {
+        require(!whiteListTokens[tokenAddress].isActive, "Token already added");
+        whiteListTokens[tokenAddress] = TokenInfo(tokenName, true);
+        whiteListTokenAddresses.push(tokenAddress);
+        emit TokenAdded(tokenAddress);
     }
 
     function removeToken(address token) external onlyManager {

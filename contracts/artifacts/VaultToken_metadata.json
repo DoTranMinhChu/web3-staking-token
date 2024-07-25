@@ -295,7 +295,7 @@
 				"name": "getMyRole",
 				"outputs": [
 					{
-						"internalType": "enum StakingToken.Role",
+						"internalType": "enum VaultToken.Role",
 						"name": "",
 						"type": "uint8"
 					}
@@ -411,6 +411,29 @@
 				"inputs": [
 					{
 						"internalType": "address",
+						"name": "tokenAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "transferTokens",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
 						"name": "",
 						"type": "address"
 					}
@@ -486,7 +509,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Vault .sol": "StakingToken"
+			"Vault .sol": "VaultToken"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -525,11 +548,11 @@
 			]
 		},
 		"Vault .sol": {
-			"keccak256": "0x2e7c8b66ea78e244fdc914e9011cbe9bb28f638da848245bf171244c6ce367a4",
+			"keccak256": "0xfedd97223f9b0491c66623695fea52950c637e0d1013fec29e133ba9bb7fda38",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://b5a950e5ee87e26727311b6db974bc078af0953fb4cab2ec2e579d817afe7859",
-				"dweb:/ipfs/QmZgURbM6hfKoxTY22AQQ6AXMLbKDDgbt63j8WNErSt1hz"
+				"bzz-raw://bc57aa83639797b3b6111cf52bd2bda644f72fd17ff657a81dda17b4f8d292da",
+				"dweb:/ipfs/QmaABsapVfhY7RMJiu1QGMxiiXGPvFAn8mGvCW6ctbhzMG"
 			]
 		}
 	},

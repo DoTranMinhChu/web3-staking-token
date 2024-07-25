@@ -6,7 +6,10 @@ import { BaseButtonComponent } from "../buttons";
 import { configEnv } from "@/configs/env";
 import { Contract } from "ethers";
 import ERC20ABI from "../../ABI/ERC20ABI.json";
-export const TokenApprovalComponent = () => {
+type ITokenApprovalComponentProps = { coinAddress: string };
+export const TokenApprovalComponent: React.FC<ITokenApprovalComponentProps> = ({
+  coinAddress,
+}) => {
   const { stakingContract } = useContext(Web3Context);
   const approvedTokenRef = useRef<{ value: string }>({ value: "" });
 
@@ -22,7 +25,7 @@ export const TokenApprovalComponent = () => {
       const provider = new ethers.BrowserProvider(window.ethereum!);
       const signer = await provider.getSigner();
 
-      const stakingContractAddress = configEnv.CTKAddress;
+      const stakingContractAddress = coinAddress;
 
       const coinContract = new Contract(
         stakingContractAddress,

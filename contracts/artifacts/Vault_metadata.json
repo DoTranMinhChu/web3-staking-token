@@ -16,23 +16,23 @@
 					{
 						"indexed": true,
 						"internalType": "address",
-						"name": "walletAddress",
+						"name": "addressToken",
 						"type": "address"
 					},
 					{
-						"indexed": false,
-						"internalType": "address",
-						"name": "tokenAddess",
-						"type": "address"
+						"indexed": true,
+						"internalType": "string",
+						"name": "accountId",
+						"type": "string"
 					},
 					{
-						"indexed": false,
+						"indexed": true,
 						"internalType": "uint256",
 						"name": "amount",
 						"type": "uint256"
 					}
 				],
-				"name": "BalanceDecreased",
+				"name": "AddTokenToAccount",
 				"type": "event"
 			},
 			{
@@ -41,67 +41,23 @@
 					{
 						"indexed": true,
 						"internalType": "address",
-						"name": "walletAddress",
+						"name": "addressWallet",
 						"type": "address"
 					},
-					{
-						"indexed": false,
-						"internalType": "address",
-						"name": "tokenAddress",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "BalanceIncreased",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
 					{
 						"indexed": true,
 						"internalType": "address",
-						"name": "walletAddress",
+						"name": "addressToken",
 						"type": "address"
 					},
 					{
-						"indexed": false,
-						"internalType": "address",
-						"name": "tokenAddress",
-						"type": "address"
-					},
-					{
-						"indexed": false,
+						"indexed": true,
 						"internalType": "uint256",
 						"name": "amount",
 						"type": "uint256"
 					}
 				],
 				"name": "Deposit",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "newDepositFee",
-						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "newWithdrawalFee",
-						"type": "uint256"
-					}
-				],
-				"name": "FeesUpdated",
 				"type": "event"
 			},
 			{
@@ -155,7 +111,32 @@
 					{
 						"indexed": true,
 						"internalType": "address",
-						"name": "tokenAddress",
+						"name": "addressToken",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "string",
+						"name": "accountId",
+						"type": "string"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "SubTokenFromAccount",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "addressToken",
 						"type": "address"
 					}
 				],
@@ -168,7 +149,7 @@
 					{
 						"indexed": true,
 						"internalType": "address",
-						"name": "tokenAddress",
+						"name": "addressToken",
 						"type": "address"
 					}
 				],
@@ -181,17 +162,42 @@
 					{
 						"indexed": true,
 						"internalType": "address",
-						"name": "walletAddress",
+						"name": "token",
 						"type": "address"
 					},
 					{
-						"indexed": false,
+						"indexed": true,
 						"internalType": "address",
-						"name": "tokenAddress",
+						"name": "toWalletAddress",
 						"type": "address"
 					},
 					{
 						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "TokensTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "addressWallet",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "addressToken",
+						"type": "address"
+					},
+					{
+						"indexed": true,
 						"internalType": "uint256",
 						"name": "amount",
 						"type": "uint256"
@@ -217,7 +223,30 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "tokenAddress",
+						"name": "addressToken",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "accountId",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "addTokenAccountId",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "addressToken",
 						"type": "address"
 					},
 					{
@@ -234,36 +263,13 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "walletAddress",
-						"type": "address"
+						"internalType": "string",
+						"name": "accountId",
+						"type": "string"
 					},
 					{
 						"internalType": "address",
-						"name": "tokenAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "decreaseBalance",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "tokenAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "walletAddress",
+						"name": "addressToken",
 						"type": "address"
 					},
 					{
@@ -279,61 +285,12 @@
 			},
 			{
 				"inputs": [],
-				"name": "depositFeePercentage",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "getMyRole",
 				"outputs": [
 					{
-						"internalType": "enum StakingToken.Role",
+						"internalType": "enum Vault.Role",
 						"name": "",
 						"type": "uint8"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "walletAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "tokenAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "increaseBalance",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "owner",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -368,17 +325,22 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "newDepositFee",
-						"type": "uint256"
+						"internalType": "address",
+						"name": "addressToken",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "accountId",
+						"type": "string"
 					},
 					{
 						"internalType": "uint256",
-						"name": "newWithdrawalFee",
+						"name": "amount",
 						"type": "uint256"
 					}
 				],
-				"name": "setFees",
+				"name": "subTokenAccountId",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -386,9 +348,9 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
+						"internalType": "string",
 						"name": "",
-						"type": "address"
+						"type": "string"
 					},
 					{
 						"internalType": "address",
@@ -396,7 +358,7 @@
 						"type": "address"
 					}
 				],
-				"name": "tokenBalanceByWallet",
+				"name": "totalTokenByAccountId",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -405,6 +367,57 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "addressToken",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "toAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "transferToken",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "addressToken",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "accountId",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "toAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "transferTokenFromAccount",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -430,47 +443,6 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "fromWalletAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "toWalletAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
-						"name": "tokenAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "withdrawFrom",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "withdrawalFeePercentage",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -486,7 +458,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Vault .sol": "StakingToken"
+			"Vault .sol": "Vault"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -525,11 +497,11 @@
 			]
 		},
 		"Vault .sol": {
-			"keccak256": "0x2e7c8b66ea78e244fdc914e9011cbe9bb28f638da848245bf171244c6ce367a4",
+			"keccak256": "0xd3921234f0e67feefac893045919b69375f47dd21e4fd95ba19f20211fe941f0",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://b5a950e5ee87e26727311b6db974bc078af0953fb4cab2ec2e579d817afe7859",
-				"dweb:/ipfs/QmZgURbM6hfKoxTY22AQQ6AXMLbKDDgbt63j8WNErSt1hz"
+				"bzz-raw://bd8117d298f6d6461310a12c60742c348799403777515dcccced5cce720c0daa",
+				"dweb:/ipfs/QmcyrxhtKdyENNDXFjPyUdRBeCiRqej6xhmPDRg1UZBENA"
 			]
 		}
 	},

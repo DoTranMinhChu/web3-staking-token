@@ -3,15 +3,18 @@ import { EarnedRewardComponent } from "./earnedReward.component";
 import { RewardRateComponent } from "./rewardRate.component";
 import { StakedAmountComponent } from "./stakedAmount.component";
 import { BasePropsType } from "@/types/base.type";
-
-export const PanelStakeComponent: React.FC<BasePropsType<HTMLDivElement>> = ({
+type PanelStakeProps = {
+  coinAddress?: string;
+} & BasePropsType<HTMLDivElement>;
+export const PanelStakeComponent: React.FC<PanelStakeProps> = ({
+  coinAddress,
   ...props
 }) => {
   return (
     <div {...props}>
-      <StakedAmountComponent />
+      <StakedAmountComponent coinAddress={coinAddress!} />
       <RewardRateComponent />
-      <EarnedRewardComponent />
+      <EarnedRewardComponent coinAddress={coinAddress!} />
     </div>
   );
 };

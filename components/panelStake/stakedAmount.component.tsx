@@ -4,8 +4,10 @@ import Web3Context from "../../context/Web3Context";
 import { ethers } from "ethers";
 import StakingContext from "@/context/StakingTokenContext";
 import { configEnv } from "@/configs/env";
-
-export const StakedAmountComponent = () => {
+type IStakedAmountProps = { coinAddress: string };
+export const StakedAmountComponent: React.FC<IStakedAmountProps> = ({
+  coinAddress,
+}) => {
   const { stakingContract, selectedAccount } = useContext(Web3Context);
   const { isReload } = useContext(StakingContext);
   const [stakedAmount, setStakedAmount] = useState("0");
@@ -14,7 +16,7 @@ export const StakedAmountComponent = () => {
     const fetchStakedBalance = async () => {
       try {
         const amountStakedWei = await stakingContract.getMyStakedBalance(
-          configEnv.CTKAddress
+          coinAddress
         );
 
         const amountStakedEth = ethers.formatUnits(

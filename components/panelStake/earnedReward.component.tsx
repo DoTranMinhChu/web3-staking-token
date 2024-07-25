@@ -2,8 +2,10 @@ import { useState, useContext, useEffect } from "react";
 import { ethers } from "ethers";
 import Web3Context from "@/context/Web3Context";
 import { configEnv } from "@/configs/env";
-
-export const EarnedRewardComponent = () => {
+type IEarnedRewardComponentProps = { coinAddress: string };
+export const EarnedRewardComponent: React.FC<IEarnedRewardComponentProps> = ({
+  coinAddress,
+}) => {
   const { stakingContract, selectedAccount } = useContext(Web3Context);
   const [rewardVal, setRewardVal] = useState("0");
 
@@ -12,7 +14,7 @@ export const EarnedRewardComponent = () => {
       try {
         //fetching earned amount of a user
         const rewardValueWei = await stakingContract.earned(
-          configEnv.CTKAddress,
+          coinAddress,
           selectedAccount
         );
         const rewardValueEth = ethers
